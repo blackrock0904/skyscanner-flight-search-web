@@ -1,0 +1,40 @@
+.container {
+  background-color: '#fff';
+  color: '#000';
+  border-bottom: 1px solid rgba(135, 135, 135, 0.2); 
+  padding: 20px;
+}
+.content {
+  display: flex;
+}
+.meta {
+  display: flex;
+  align-content: center;
+}
+.bigText {
+  font-family: SF Pro Text;
+  font-weight: 300;
+  font-size: 17px;
+  color: #424242;
+}
+.mediumText {
+  font-family: SF Pro Text;
+  font-size: 14px;
+  color: #878787;
+}
+.smallText {
+  font-size: 11px;
+  color: #878787;
+}
+.metaContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.flexEnd{
+  display: flex;
+  flex-direction:column;
+  align-items: flex-end;
+  justify-content: space-between;
+}

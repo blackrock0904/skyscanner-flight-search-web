@@ -1,5 +1,12 @@
-import { LOG_IN, LOG_OUT, LOAD_TO_STATE } from './ActionTypes';
-import { getDate } from '../scripts/getDate';
+import {
+  LOG_IN,
+  LOG_OUT,
+  LOAD_TO_STATE,
+  LIKE_FLIGHT
+} from './ActionTypes';
+import {
+  getDate
+} from '../scripts/getDate';
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -8,31 +15,46 @@ export const reducer = (state, action) => {
         ...state,
         isAuthenticated: true
       }
-    case LOG_OUT:
-      return {
-        ...state,
-        isAuthenticated: false
-      }
-      case LOAD_TO_STATE:
-      return {
-        ...state,
-        flights: action.payload.Quotes.map(quote => {
+      case LOG_OUT:
+        return {
+          ...state,
+          isAuthenticated: false
+        }
+        case LOAD_TO_STATE:
           return {
-            id: String(quote.QuoteId),
-            departureCity: 'Moscow',
-            arriveCity: 'New York',
-            departurePort: 'VKO',
-            arrivePort: 'JFK',
-            departureDate: getDate(new Date(quote.OutboundLeg.DepartureDate)),
-            departureTime: '09:00',
-            arriveTime: '20:50',
-            company: action.payload.Carriers.find(item => item.CarrierId == quote.OutboundLeg.CarrierIds[0]).Name || 'undefined',
-            price: quote.MinPrice,
-            isLiked: false
+            ...state,
+            flights: action.payload.Quotes.map(quote => {
+              return {
+                id: String(quote.QuoteId),
+                departureCity: 'Moscow',
+                arriveCity: 'New York',
+                departurePort: 'VKO',
+                arrivePort: 'JFK',
+                departureDate: getDate(new Date(quote.OutboundLeg.DepartureDate)),
+                departureTime: '09:00',
+                arriveTime: '20:50',
+                company: action.payload.Carriers.find(item => item.CarrierId == quote.OutboundLeg.CarrierIds[0]).Name || 'undefined',
+                price: quote.MinPrice,
+                isLiked: false
+              }
+            })
           }
-        })
-      }
-    default:
-      return state;
+          case LIKE_FLIGHT:
+            return {
+              ...state,
+              flights: state.flights.map(item => {
+                if (item !== action.payload) {
+                  return item;
+                } else {
+                  return {
+                    ...item,
+                    isLiked: !item.isLiked
+                  }
+                }
+              }),
+              
+            }
+            default:
+              return state;
   }
 }
