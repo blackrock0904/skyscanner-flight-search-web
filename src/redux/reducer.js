@@ -1,4 +1,6 @@
-import { LOG_IN, LOG_OUT } from './ActionTypes';
+import { LOG_IN, LOG_OUT, LOAD_TO_STATE } from './ActionTypes';
+import { getDate } from '../scripts/getDate';
+
 export const reducer = (state, action) => {
   switch (action.type) {
     case LOG_IN:
@@ -10,6 +12,25 @@ export const reducer = (state, action) => {
       return {
         ...state,
         isAuthenticated: false
+      }
+      case LOAD_TO_STATE:
+      return {
+        ...state,
+        flights: action.payload.Quotes.map(quote => {
+          return {
+            id: String(quote.QuoteId),
+            departureCity: 'Moscow',
+            arriveCity: 'New York',
+            departurePort: 'VKO',
+            arrivePort: 'JFK',
+            departureDate: getDate(new Date(quote.OutboundLeg.DepartureDate)),
+            departureTime: '09:00',
+            arriveTime: '20:50',
+            company: action.payload.Carriers.find(item => item.CarrierId == quote.OutboundLeg.CarrierIds[0]).Name || 'undefined',
+            price: quote.MinPrice,
+            isLiked: false
+          }
+        })
       }
     default:
       return state;

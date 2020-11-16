@@ -1,7 +1,7 @@
 
 import { LoginPage } from './components/LoginPage';
 import { BrowserRouter as Router, Route, Switch } from'react-router-dom';
-import { Flights } from './components/Flights';
+import { FlightsPage } from './components/FlightsPage';
 import { PrivateRoute } from './components/PrivateRoute';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
               <LoginPage/>
             </Route>
             <PrivateRoute path='/flights'>
-              <Flights/>
+              <FlightsPage/>
             </PrivateRoute>
         </Switch>
       </Router>
