@@ -7,6 +7,7 @@ import { FlightsList } from './FlightsList';
 import { startFeth } from '../redux/actions';
 import { MyCarousel } from '../components/MyCarousel';
 import { SvgMore } from '../components/SvgMore';
+import { SvgData } from '../components/SvgData';
 import { DataPicker } from './DataPicker';
 
 export const FlightsPage = () => {
@@ -45,8 +46,9 @@ export const FlightsPage = () => {
         {flights?.length && <div>{flights[0].departurePort}</div>}
         <div>-</div>
         {flights?.length && <div>{flights[0].arrivePort}</div>}
-        <div>
+        <div className={styles.data}>
           <DataPicker/>
+          <SvgData/>
         </div>
       </h1>
       <MyCarousel slideIndex={1}/>

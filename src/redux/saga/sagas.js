@@ -7,12 +7,8 @@ const getDate = (state) => state.date;
 let date; 
 const fetchSkyScanner = async () => {
   
-  // let date = new Date();
-   let since = date.toISOString().slice(0, 10);
-   let till = new Date(date.getTime() + 1000 * 60 * 60 * 24 * 20).toISOString().slice(0,10);
-
-  // let since = useSelector(state => state.date).toISOString().slice(0, 10);
-  // let till = useSelector(state => state.date.getTime() + 1000 * 60 * 60 *24 * 10).toISOString().slice(0,10);
+  let since = date.toISOString().slice(0, 10);
+  let till = new Date(date.getTime() + 1000 * 60 * 60 * 24 * 20).toISOString().slice(0,10);
   const resp = await fetch(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/US/RUB/en-US/SFO-sky/LAX-sky/${since}?inboundpartialdate=${till}`, {
 	"method": "GET",
 	"headers": {
