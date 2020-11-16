@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 import InfiniteCarousel from 'react-leaf-carousel';
-import styles from './MyCarousel.module.css';
+
 
 export const MyCarousel = () => {
   return (

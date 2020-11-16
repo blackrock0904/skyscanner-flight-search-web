@@ -45,7 +45,9 @@ export const FlightsPage = () => {
         {flights?.length && <div>{flights[0].departurePort}</div>}
         <div>-</div>
         {flights?.length && <div>{flights[0].arrivePort}</div>}
-        <DataPicker/>
+        <div>
+          <DataPicker/>
+        </div>
       </h1>
       <MyCarousel slideIndex={1}/>
       <div className={styles.total}>Добавлено в избранное: {totalLike} flight</div>

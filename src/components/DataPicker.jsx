@@ -1,18 +1,23 @@
-import { DatePicker, Space } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import DatePicker from 'react-date-picker';
+import {setDate, startFeth} from '../redux/actions';
 
-const { RangePicker } = DatePicker;
+export function DataPicker() {
+  const dispatch = useDispatch();
+  const [value, setValue] = useState(new Date());
+  
+  useEffect(()=>{
+    dispatch(setDate(value));
+    dispatch(startFeth())
 
-export const DataPicker = () => {
+  },[value]);
   return (
-    // <Space direction="vertical" size={1}>
-      <DatePicker bordered={false} />
-      /* <DatePicker picker="week" bordered={false} />
-      <DatePicker picker="month" bordered={false} />
-      <DatePicker picker="year" bordered={false} />
-      <RangePicker bordered={false} />
-      <RangePicker picker="week" bordered={false} />
-      <RangePicker picker="month" bordered={false} />
-      <RangePicker picker="year" bordered={false} /> */
-    // </Space>
+    <div>
+      <DatePicker
+        onChange={setValue}
+        value={value}
+      />
+    </div>
   );
 }

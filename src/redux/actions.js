@@ -1,4 +1,4 @@
-import { LIKE_FLIGHT, LOG_IN, LOG_OUT, LOAD_TO_STATE, START_FETCH } from './ActionTypes';
+import { SET_DATE, LIKE_FLIGHT, LOG_IN, LOG_OUT, LOAD_TO_STATE, START_FETCH } from './ActionTypes';
 
 export const logIn = () => {
   return {type: LOG_IN};
@@ -20,4 +20,9 @@ export const startFeth = () => {
 export const likeFlight = flightCard => ({
   type: LIKE_FLIGHT,
   payload: flightCard
+})
+
+export const setDate = data => ({
+  type: SET_DATE,
+  payload: data
 })

@@ -2,7 +2,8 @@ import {
   LOG_IN,
   LOG_OUT,
   LOAD_TO_STATE,
-  LIKE_FLIGHT
+  LIKE_FLIGHT,
+  SET_DATE
 } from './ActionTypes';
 import {
   getDate
@@ -33,7 +34,7 @@ export const reducer = (state, action) => {
                 departureDate: getDate(new Date(quote.OutboundLeg.DepartureDate)),
                 departureTime: '09:00',
                 arriveTime: '20:50',
-                company: action.payload.Carriers.find(item => item.CarrierId == quote.OutboundLeg.CarrierIds[0]).Name || 'undefined',
+                company: action.payload.Carriers.find(item => item.CarrierId === quote.OutboundLeg.CarrierIds[0]).Name || 'undefined',
                 price: quote.MinPrice,
                 isLiked: false
               }
@@ -53,6 +54,11 @@ export const reducer = (state, action) => {
                 }
               }),
               
+            }
+          case SET_DATE:
+            return {
+              ...state,
+              date: action.payload
             }
             default:
               return state;
