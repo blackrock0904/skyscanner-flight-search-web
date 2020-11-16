@@ -1,0 +1,78 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background-image: url('../flight_info.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.mid {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm {
+  box-sizing: border-box;
+  width: 410px;
+  padding: 50px;
+  height: 338px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+
+}
+
+.title {
+  font-family: Roboto;
+  font-size: 24px;
+  line-height: 28px;
+  color: #424242;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+input {
+  border: 1px solid #C9CACC;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 34px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+label {
+  font-size: 16px;
+  color: #424242;
+  margin-bottom: 7px;
+}
+
+button {
+  width: 116px;
+  height: 34px;
+  background: linear-gradient(104.34deg, #3C4CAD -15.34%, #00C3FF 145.95%);
+  border: 0;
+  border-radius: 4px;
+  box-sizing: content-box;
+  font-family: 'Roboto';
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #FFFFFF;
+  box-sizing: border-box;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 4px #99A0A3;
+}
+
+button:active {
+  background: linear-gradient(104.34deg, #5362BE -15.34%, #4AD5FF 145.95%);
+  border: 0;
+  border: 1.5px solid rgba(29, 138, 216, 0.3);
+}
